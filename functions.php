@@ -15,9 +15,6 @@ add_action( 'after_setup_theme', function() {
   // Enqueue Stylesheet
   add_action( 'wp_enqueue_scripts', 'twentytwentychild_enqueue_scripts' );
 
-  // Unregister Parent Navigation Menus
-  add_action( 'init', 'twentytwentychild_unregister_menus' );
-
   // Unregister Parent Widget Areas & Register New Ones
   add_action( 'widgets_init', 'twentytwentychild_unregister_widgets' );
 }, 20 );
@@ -38,15 +35,10 @@ function twentytwentychild_enqueue_scripts() {
       array( $parenthandle ),
       $theme->get('Version') // this only works if you have Version in the style header
   );
-}
 
-// Unregister unneeded navigation menus
-function twentytwentychild_unregister_menus() {
-  // Unregister Footer Navigation
-  unregister_nav_menu( 'footer' );
-
-  // Unregister Social Navigation
-  unregister_nav_menu( 'social' );
+  if ( has_nav_menu( 'social' ) ) :
+    add_action( 'wp_body_open', 'twentytwentychild_add_before_header', 99 );
+  endif;
 }
 
 // Unregister unneeded widget areas
@@ -63,7 +55,7 @@ function twentytwentychild_unregister_widgets() {
   );
 
   $shared_args = array(
-		'before_title'  => '<h2 class="widget-title subheading heading-size-3">',
+		'before_title'  => '<h2 class="widget-title subheading heading-size-5">',
 		'after_title'   => '</h2>',
 		'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
     'after_widget'  => '</div></div>',
@@ -85,3 +77,32 @@ function twentytwentychild_unregister_widgets() {
     $counter++;
   }
 }
+
+// Add Before Header
+function twentytwentychild_add_before_header() { ?>
+  <div id="before-header" class="before-header">
+    <div class="before-header-inner section-inner">
+      <nav aria-label="<?php esc_attr_e( 'Social links', 'twentytwenty' ); ?>" class="footer-social-wrapper">
+
+        <ul class="social-menu footer-social reset-list-style social-icons fill-children-current-color">
+          <?php
+          wp_nav_menu(
+            array(
+              'theme_location'  => 'social',
+              'container'       => '',
+              'container_class' => '',
+              'items_wrap'      => '%3$s',
+              'menu_id'         => '',
+              'menu_class'      => '',
+              'depth'           => 1,
+              'link_before'     => '<span class="screen-reader-text">',
+              'link_after'      => '</span>',
+              'fallback_cb'     => '',
+            )
+          );
+          ?>
+        </ul><!-- .footer-social -->
+      </nav><!-- .footer-social-wrapper -->
+    </div>
+  </div>
+<?php }

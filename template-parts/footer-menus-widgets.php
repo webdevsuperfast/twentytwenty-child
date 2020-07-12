@@ -8,9 +8,6 @@
  * @since Twenty Twenty 1.0
  */
 
-$has_footer_menu = has_nav_menu( 'footer' );
-$has_social_menu = has_nav_menu( 'social' );
-
 $has_footer_1 = is_active_sidebar( 'footer-1' );
 $has_footer_2 = is_active_sidebar( 'footer-2' );
 $has_footer_3 = is_active_sidebar( 'footer-3' );

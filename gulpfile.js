@@ -49,7 +49,7 @@ var fontsWatch   = './src/fonts/**/*.*';
 function browser_sync() {
 	browserSync.init({
 		injectChanges: true,
-		proxy: 'http://bootstrap.test'
+		proxy: 'http://wordpress.ddev.site'
 	});
 }
 

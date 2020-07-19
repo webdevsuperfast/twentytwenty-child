@@ -8,10 +8,10 @@
  * @since Twenty Twenty 1.0
  */
 
-$has_footer_1 = is_active_sidebar( 'footer-1' );
-$has_footer_2 = is_active_sidebar( 'footer-2' );
-$has_footer_3 = is_active_sidebar( 'footer-3' );
-$has_footer_4 = is_active_sidebar( 'footer-4' );
+$has_footer_1 = is_active_sidebar( 'sidebar-1' );
+$has_footer_2 = is_active_sidebar( 'sidebar-2' );
+$has_footer_3 = is_active_sidebar( 'sidebar-3' );
+$has_footer_4 = is_active_sidebar( 'sidebar-4' );
 
 // Only output the container if there are elements to display.
 if ( $has_footer_1 || $has_footer_2 || $has_footer_3 || $has_footer_4 ) {

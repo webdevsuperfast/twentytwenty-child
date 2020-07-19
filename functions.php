@@ -43,15 +43,11 @@ function twentytwentychild_enqueue_scripts() {
 
 // Unregister unneeded widget areas
 function twentytwentychild_unregister_widgets() {
-  unregister_sidebar( 'sidebar-1' );
-  unregister_sidebar( 'sidebar-2' );
 
   // Register Footer Widget Areas
   $widget_areas = array(
-    'footer-1' => __( 'Footer #1', 'twentytwentychild' ),
-    'footer-2' => __( 'Footer #2', 'twentytwentychild' ),
-    'footer-3' => __( 'Footer #3', 'twentytwentychild' ),
-    'footer-4' => __( 'Footer #4', 'twentytwentychild' )
+    'sidebar-3' => __( 'Footer #3', 'twentytwentychild' ),
+    'sidebar-4' => __( 'Footer #4', 'twentytwentychild' )
   );
 
   $shared_args = array(

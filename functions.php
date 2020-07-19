@@ -51,7 +51,7 @@ function twentytwentychild_unregister_widgets() {
   );
 
   $shared_args = array(
-		'before_title'  => '<h2 class="widget-title subheading heading-size-5">',
+		'before_title'  => '<h2 class="widget-title subheading heading-size-3">',
 		'after_title'   => '</h2>',
 		'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
     'after_widget'  => '</div></div>',
